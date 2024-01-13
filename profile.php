@@ -1,14 +1,22 @@
 <?php
+    // update codes by using Auth class => for checking session
+    include("vendor/autoload.php");
 
-session_start();
-$login = isset( $_SESSION["user"] );
+    use Helpers\Auth;
 
-// $login = true;
-if (!$login) {
-    header("location: index.php");
-    exit();
-}
+    $user = Auth::check();
+    
+    // old version for checking session
+    /*
+    session_start();
+    $login = isset( $_SESSION["user"] );
 
+    // $login = true;
+    if (!$login) {
+        header("location: index.php");
+        exit();
+    }
+    */
 ?>
 
 <!DOCTYPE html>
@@ -37,10 +45,10 @@ if (!$login) {
         </form>
 
         <ul class="list-group mb-3">
-            <li class="list-group-item"><b>Name:</b> Alice</li>
-            <li class="list-group-item"><b>Email:</b> alice@gmail.com</li>
-            <li class="list-group-item"><b>Phone:</b> 387928492</li>
-            <li class="list-group-item"><b>Address:</b> Some Address</li>
+            <li class="list-group-item"><b>Name:</b> <?= $user->name ?></li>
+            <li class="list-group-item"><b>Email:</b> <?= $user->email ?></li>
+            <li class="list-group-item"><b>Phone:</b> <?= $user->phone ?> </li>
+            <li class="list-group-item"><b>Address:</b> <?= $user->address ?> </li>
         </ul>
 
         <a href="_actions/logout.php" class="text-danger">Logout</a>

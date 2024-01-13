@@ -11,10 +11,16 @@
 
         <h1 class="my-4 h3">Login</h1>
 
+        <!-- message for incorrect info -->
         <?php if (isset($_GET["incorrect"])) : ?>
             <div class="alert alert-warning">Incorrect Email or Password</div>
         <?php endif ?>
         
+        <!-- message for register successful -->
+        <?php if (isset($_GET["register"])) : ?>
+            <div class="alert alert-info">Account created, please login</div>
+        <?php endif ?>
+
         <form action="_actions/login.php" method="post" class="mb-3">
             <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
             <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>

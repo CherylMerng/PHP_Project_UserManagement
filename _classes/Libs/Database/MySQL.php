@@ -42,3 +42,7 @@ class MySQL
         }
     }
 }
+
+// To use MySQL.php in other class,
+// MySQL $mysql
+// $mysql->connect()
