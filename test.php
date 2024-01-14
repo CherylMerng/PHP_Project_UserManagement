@@ -2,6 +2,9 @@
 
 include("vendor/autoload.php");
 
+// use Helpers\Auth;
+// Auth::testcheck();
+
 /*
 use Faker\Factory as Faker;
 use Helpers\Auth;
@@ -38,11 +41,12 @@ print_r($result->fetchAll());
 */
 
 // Test UsersTable.php 
-
+/*
 use Libs\Database\MySQL;
 use Libs\Database\UsersTable;
 
 $table = new UsersTable(new MySQL());   // create object
+*/
 
 // test insert()
 /*
@@ -62,3 +66,25 @@ echo $id;
 $user = $table->find("alice@gmail.com","password");
 print_r($user); 
 */
+
+// test getAll()
+use Libs\Database\MySQL;
+use Libs\Database\UsersTable;
+use Faker\Factory as Faker;
+
+$faker = Faker::create();
+
+$table = new UsersTable(new MySQL);
+
+echo "Sample Data: Starting... <br>";
+for ($i=0; $i<20; $i++) {
+    $table->insert([
+        "name" => $faker->name,
+        "email" => $faker->email,
+        "phone" => $faker->phoneNumber,
+        "address" => $faker->address,   
+        "password" => $faker->password,
+    ]);
+}
+
+echo "Done <br>";

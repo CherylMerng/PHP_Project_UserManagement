@@ -15,6 +15,11 @@ class Auth
             // if not, redirect to index page (login page)
         HTTP::redirect('/index.php', 'auth=fail');
     }
+
+    static function testcheck() {
+        echo "Auth Check <br>";
+    }
+
 }
 
 // To use check()

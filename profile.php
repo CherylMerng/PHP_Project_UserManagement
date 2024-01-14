@@ -35,8 +35,8 @@
             <div class="alert alert-warning">Cannot Upload File</div>
         <?php endif ?>
 
-        <?php if(file_exists("_actions/photos/profile.jpg")) : ?>
-            <img src="_actions/photos/profile.jpg" alt="Profile Photo" class="img-thumbnail" width="300">
+        <?php if ($user->photo) : ?>
+            <img src="_actions/photos/<?= $user->photo ?>" alt="Profile Photo" class="img-thumbnail" width="300">
         <?php endif ?>
 
         <form action="_actions/upload.php" method="post" enctype="multipart/form-data" class="my-4 input-group">
@@ -52,6 +52,7 @@
         </ul>
 
         <a href="_actions/logout.php" class="text-danger">Logout</a>
+        <a href="admin.php">Admin</a>
     </div>
 </body>
 </html>
