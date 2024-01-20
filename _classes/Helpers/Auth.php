@@ -3,6 +3,7 @@
 // Step 5 - helpers
 
 namespace Helpers;
+// after configuring autoload file, if same namesapce, no need to import (HTTP.php)
 
 class Auth 
 {
