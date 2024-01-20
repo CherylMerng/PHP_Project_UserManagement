@@ -1,5 +1,7 @@
 <?php
 
+// Step 6 - register
+
 include("../vendor/autoload.php");
 
 use Helpers\HTTP;
@@ -12,6 +14,7 @@ $table = new UsersTable(new MySQL);
 // write insert()
 $table->insert([
     // get data from register form which user filled in
+    // column name in database table => data from user input
     "name" => $_POST["name"],
     "email" => $_POST["email"],
     "phone" => $_POST["phone"],
@@ -20,4 +23,5 @@ $table->insert([
 ]);
 
 // if successful, redirect to index page
+    // second parameter => for developer's note
 HTTP::redirect("/index.php", "register=success");

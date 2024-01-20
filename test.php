@@ -48,7 +48,7 @@ use Libs\Database\UsersTable;
 $table = new UsersTable(new MySQL());   // create object
 */
 
-// test insert()
+// Test insert()
 /*
 $id = $table->insert([
     "name" => "Alice",
@@ -61,13 +61,13 @@ $id = $table->insert([
 echo $id;
 */
 
-// test find()
+// Test find()
 /*
 $user = $table->find("alice@gmail.com","password");
 print_r($user); 
 */
 
-// test getAll()
+// Test getAll()
 use Libs\Database\MySQL;
 use Libs\Database\UsersTable;
 use Faker\Factory as Faker;

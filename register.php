@@ -10,6 +10,8 @@
     <!-- go to create.php -->
     <div class="container text-center" style="max-width: 600px;">
         <h1 class="my-4 h3">Register</h1>
+
+        <!-- Step 6 - register -->
         <form action="_actions/create.php" method="post" class="mb-3">
             <input type="text" name="name" class="form-control mb-2" placeholder="Name" required>
             <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>

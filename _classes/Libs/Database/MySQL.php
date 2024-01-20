@@ -1,5 +1,7 @@
 <?php
 
+// Step 4 - database
+ 
 namespace Libs\Database;
 
 use PDO;    // PDO is under global namespace
@@ -15,7 +17,7 @@ class MySQL
 
     public function __construct($dbhost = "localhost", $dbname = "project", $dbuser = "cheryl", $dbpass = "cheryl123") {
         
-        // Close database connection (return null for db in PDO object)
+        // close database connection (return null for db in PDO object)
         $this->db = null;
         $this->dbhost = $dbhost;
         $this->dbname = $dbname;

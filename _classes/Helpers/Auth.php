@@ -1,5 +1,7 @@
 <?php 
 
+// Step 5 - helpers
+
 namespace Helpers;
 
 class Auth 
@@ -12,13 +14,13 @@ class Auth
         }
 
         // use redirect() written in HTTP.php
-            // if not, redirect to index page (login page)
+        // if user is not in session, redirect to index page (login page)
         HTTP::redirect('/index.php', 'auth=fail');
     }
 
-    static function testcheck() {
-        echo "Auth Check <br>";
-    }
+    // static function testcheck() {
+    //     echo "Auth Check <br>";
+    // }
 
 }
 
