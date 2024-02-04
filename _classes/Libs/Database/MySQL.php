@@ -22,7 +22,7 @@ class MySQL
     // $db2 = new MySQL("localhost", "project", "cheryl", "cheryl123"); [OR]
     // $db2 = new MySQL();
 
-    public function __construct($dbhost = "localhost", $dbname = "project", $dbuser = "cheryl", $dbpass = "cheryl123") {
+    public function __construct($dbhost = "localhost", $dbname = "usermanagement", $dbuser = "cheryl", $dbpass = "cheryl123") {
         
         // close database connection (return null for db in PDO object)
         $this->db = null;

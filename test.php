@@ -68,6 +68,7 @@ print_r($user);
 */
 
 // Test getAll()
+/*
 use Libs\Database\MySQL;
 use Libs\Database\UsersTable;
 use Faker\Factory as Faker;
@@ -88,3 +89,8 @@ for ($i=0; $i<20; $i++) {
 }
 
 echo "Done <br>";
+*/
+
+// Test hash function
+$password = "s";
+$hash = password_hash($password, PASSWORD_DEFAULT);

@@ -19,6 +19,11 @@ class UsersTable
             $statement = $this->db->prepare(
                 "INSERT INTO users (name, email, phone, address, password, created_at) VALUES (:name, :email, :phone, :address, :password, NOW())"
             );
+
+            // Step 14 - password security
+            // hash first before inserting data
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            
             $statement->execute($data);
 
             // need to know to identity record
@@ -45,16 +50,33 @@ class UsersTable
 
     // Step 7 - login
     // write find() for finding user’s email and password
+
+    // select query (prepare + execute)
+        // run query only one time & prevent SQL Injection
+        
     public function find($email, $password) {
         try {
-            // select query (prepare + execute)
-                // run query only one time & prevent SQL Injection
-            $statement = $this->db->prepare("SELECT * FROM users WHERE email=:email AND password=:password");
-            $statement->execute(["email" => $email,"password"=> $password]);
+            // old v
+            // $statement = $this->db->prepare("SELECT * FROM users WHERE email=:email AND password=:password");
+            // $statement->execute(["email" => $email,"password"=> $password]);
+
+            // Step 14 - password security
+            $statement = $this->db->prepare("SELECT * FROM users WHERE email=:email");
+            $statement->execute(["email" => $email]);
+
             // fetch data
             $user = $statement->fetch();
 
-            return $user ?? false;  // ?? => if else
+            // old v
+            // return $user ?? false;  // ?? => if else
+            // Step 14 - password security
+            if ($user) {
+                if (password_verify($password, $user->password)) {
+                    return $user;
+                }
+
+                return false;
+            }
         }
         catch (PDOException $e) {
             echo $e->getMessage();
